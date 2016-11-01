@@ -1,0 +1,302 @@
+/*页面公共部分*/
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html
+{
+    font-size: 62.5%;
+}
+
+body
+{
+    margin: 0 auto;
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft YaHei';
+}
+
+p
+{
+    margin: 0;
+    padding: 0;
+}
+
+a
+{
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+input
+{
+    outline: none;
+}
+
+ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li
+{
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-nowrap
+{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div
+{
+    font-size: 0;
+}
+
+img
+{
+    border: none;
+    display: block;
+}
+
+/*banner和标题*/
+.banner
+{
+    width: 100%;
+    overflow: hidden;
+    font-size: 0;
+}
+
+    .banner img
+    {
+        width: 100%;
+    }
+
+/*大转盘*/
+.top1
+{
+    width: 100%;
+    overflow: hidden;
+    font-size: 0;
+    position: relative;
+}
+
+    .top1 img
+    {
+        width: 100%;
+    }
+
+.zhuanpan_div
+{
+    position: absolute;
+    bottom: 9%;
+    left: 16%;
+    width: 68%;
+}
+
+    .zhuanpan_div img
+    {
+        width: 100%;
+    }
+
+.turntable-bg
+{
+    position: relative;
+}
+
+    .turntable-bg .pointer
+    {
+        width: 30%;
+        position: absolute;
+        left: 37%;
+        top: 33%;
+        z-index: 8;
+    }
+
+    .turntable-bg .rotate
+    {
+        width: 80%;
+        position: absolute;
+        left: 11.3%;
+        top: 17.9%;
+    }
+
+/*输入框*/
+.shurukuang
+{
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    color: #000000;
+    /*text-align: center;*/
+    font-size: 1.4rem;
+    padding: 8px 0px;
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    border: 1px solid #a7a7a7;
+    padding-left: 5px;
+}
+
+    .shurukuang placeholder
+    {
+        /*text-align: center;*/
+        font-size: 1.5rem;
+        color: #000000;
+        font-family: 'Microsoft YaHei';
+        font-weight: 100;
+        margin-left: 5px;
+    }
+
+
+/*未抽中提示框*/
+.weichouzhong_div
+{
+    position: absolute;
+    width: 80%;
+    top: 20%;
+    left: 10%;
+    z-index: 9999;
+}
+
+    .weichouzhong_div img
+    {
+        width: 100%;
+        position: relative;
+    }
+
+.shurukuang1
+{
+    top: 58%;
+}
+
+.shurukuang2
+{
+    top: 65%;
+}
+
+.wcz_btn
+{
+    position: absolute;
+    width: 40%;
+    bottom: 10%;
+    left: 30%;
+}
+
+/*抽中提示框*/
+.chouzhong_div
+{
+    position: absolute;
+    width: 80%;
+    top: 15%;
+    left: 10%;
+    z-index: 9999;
+}
+
+.jiangpintishi
+{
+    position: absolute;
+    top: 37%;
+    left: 0px;
+    width: 100%;
+    padding-bottom: 5%;
+    border-bottom: 1px solid #cccccc;
+}
+
+.tishiyu1
+{
+    color: #f64a43;
+    font-size: 2.0rem;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 2%;
+}
+
+.tishiyu2
+{
+    color: #f64a43;
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: bold;
+}
+/*提交前*/
+.tijiaoqian
+{
+    width: 100%;
+}
+
+.shurukuang3
+{
+    top: 60%;
+}
+
+.shurukuang4
+{
+    top: 73%;
+}
+
+.cz_btn
+{
+    position: absolute;
+    width: 40%;
+    bottom: 3%;
+    left: 30%;
+}
+/*提交后*/
+.tijiaohou
+{
+    position: absolute;
+    width: 100%;
+    bottom: 10%;
+    left: 0%;
+}
+
+.tijiao1
+{
+    color: #f64a43;
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tijiao2
+{
+    color: #f64a43;;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px 15px;
+}
+/*关闭按钮*/
+.close1
+{
+    position: absolute;
+    right: 4%;
+    top: 14%;
+    width: 10%;
+}
+.close1 img{
+    width: 100%;
+}
+
+.close2
+{
+    position: absolute;
+    right: 4%;
+    top: 14%;
+    width: 10%;
+}
+.close2 img{
+    width: 100%;
+}

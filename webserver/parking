@@ -1,0 +1,99 @@
+package parking;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ParkingMain
+{
+  ResultSet zongshu = null;
+  ResultSet zongjine = null;
+  ResultSet jine = null;
+  int deleteresult = 0;
+  Statement stmt = null;
+  Statement stmt2 = null;
+  Statement stmt3 = null;
+  Statement stmt4 = null;
+  Connection conn = null;
+
+  public String delete(String deletedate, float f)
+  {
+    JDBCutil test = new JDBCutil();
+    try
+    {
+      this.conn = test.getConnection();
+    }
+    catch (Exception e)
+    {
+      return "������������������������";
+    }
+    int zs = 0;
+    int tops = 300;
+    int totalmoney = 0;
+    int scmoney = 0;
+    try
+    {
+      this.stmt = this.conn.createStatement();
+      this.stmt2 = this.conn.createStatement();
+      this.stmt3 = this.conn.createStatement();
+      this.stmt4 = this.conn.createStatement();
+      String counttotal = "select COUNT(1) as cou  from TB_CarParkInOutRecord where CONVERT(varchar(100),OutCarTime,120) between '" +
+        deletedate + " 00:00:00' and '" + deletedate + " 24:00:00'";
+      String totalpay = "select SUM(PayMoney) as paymoney from TB_CarParkInOutRecord where CONVERT(varchar(100),OutCarTime,120) between '" +
+
+        deletedate + " 00:00:00' and '" + deletedate + " 24:00:00'";
+
+      this.zongshu = this.stmt.executeQuery(counttotal);
+
+      this.zongjine = this.stmt2.executeQuery(totalpay);
+      while (this.zongshu.next())
+      {
+        if (this.zongshu.getString("cou").equals("0")) {
+          return "������������������������������";
+        }
+        zs = Integer.parseInt(this.zongshu.getString("cou"));
+      }
+      while (this.zongjine.next())
+      {
+        String om = this.zongjine.getString("paymoney");
+        String om1 = om.substring(0, om.lastIndexOf("."));
+        totalmoney = Integer.parseInt(om1);
+
+        float f1 = totalmoney * f;
+        scmoney = (int)f1;
+      }
+      for (int i = tops; i < zs; i += 5)
+      {
+        int tt = 0;
+        this.jine = this.stmt3.executeQuery("select SUM(PayMoney) as paymoney from (select top(" + i + ") *  from TB_CarParkInOutRecord where CONVERT(varchar(100),OutCarTime,120) between '" + deletedate + " 00:00:00' and '" + deletedate + " 24:00:00' order by InCarNO ) aa");
+        while (this.jine.next())
+        {
+          String om = this.jine.getString("paymoney");
+          String om1 = om.substring(0, om.lastIndexOf("."));
+          tt = Integer.parseInt(om1);
+        }
+        if (tt > scmoney)
+        {
+          tops = i;
+
+          String up = "delete from TB_CarParkInOutRecord  where Id in (select top " + tops + "Id from TB_CarParkInOutRecord where CONVERT(varchar(100),OutCarTime,120) between '" + deletedate + " 00:00:00' and '" + deletedate + " 24:00:00' order by InCarNO)";
+          this.deleteresult = this.stmt4.executeUpdate(up);
+          break;
+        }
+      }
+    }
+    catch (SQLException e)
+    {
+      test.close(this.zongshu, this.stmt, this.conn);
+      test.close(this.zongjine, this.stmt2, this.conn);
+      test.close(this.jine, this.stmt3, this.conn);
+      return "���������������";
+    }
+    test.close(this.zongshu, this.stmt, this.conn);
+    test.close(this.zongjine, this.stmt2, this.conn);
+    test.close(this.jine, this.stmt3, this.conn);
+    String result = "���������������" + deletedate + "������������" + zs + "������" + "������������" + totalmoney + "������" + "\n" + "���������������" + tops + "������" + "������������������" + scmoney + "������";
+    return result;
+  }
+}

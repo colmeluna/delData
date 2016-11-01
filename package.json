@@ -1,0 +1,6 @@
+{
+  "name"    : "deldata",
+  "version" : "v1.3.8",
+  "main"    : "main.js",
+  "dependencies.electron-prebuilt":"v1.4.4"
+}
