@@ -12,14 +12,9 @@ function getName(callback) {
         // password:'',
         // database:'test',
         // port:'3306'
-        host:'127.0.0.1',
-        user:'root',
-        password:'root',
-        database:'test',
-        port:'3306'
     });
     connection.connect();
-    connection.query('SELECT name from people where id = 1', function (err, rows, fields) {
+    connection.query('SELECT name from people where ', function (err, rows, fields) {
         if (err) throw err;
         name = rows[0].name;
         console.log('name is ' + name);

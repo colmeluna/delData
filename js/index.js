@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var fs = require('fs');
-var config = JSON.parse(fs.readFileSync('./mysql.json'));
+//var config = JSON.parse(fs.readFileSync('./mysql.json'));
 var connection = mysql.createConnection({
     host: config.host,
     user: config.user,
@@ -8,7 +8,6 @@ var connection = mysql.createConnection({
     database: config.database,
     port: config.port
 });
-
 
 function getName(callback) {
     connection.connect();
